@@ -23,6 +23,18 @@ Status legend: ✅ done · 🔄 in progress · ⬜ not started
   builds with Python 3.12 and deploys `dist/` to GitHub Pages on push to `main`.
 - ✅ **Project documentation** — this file and [project_spec.md](project_spec.md).
 
+- ✅ **Extend YAML schema to capture full research detail** — `data/SCHEMA.md`
+  now models architecture notes, metering, scale-resilience %, catch/strength,
+  and sources.
+- ✅ **Convert real tool data from `tools-comparison-data.md` into YAML** — all
+  10 tools now have real YAML files in `data/`: `google-antigravity.yaml`,
+  `kimi-k2-7-code.yaml`, `cursor-ai.yaml`, `vscode-kiro.yaml`,
+  `ollama-cloud.yaml`, `github-copilot.yaml`, `microsoft-copilot.yaml`,
+  `openai-codex.yaml`, `claude-code.yaml`, `ollama-local.yaml`. Placeholder
+  files removed. Template (`templates/index.html.j2`) updated to render the
+  richer schema; verified locally with `python build/build.py` (10 tools
+  built).
+
 ## In progress
 
 - 🔄 None currently.
@@ -32,17 +44,6 @@ Status legend: ✅ done · 🔄 in progress · ⬜ not started
 - ⬜ **Enable GitHub Pages in repo settings** — Settings → Pages → Source =
   "GitHub Actions". Required before the deploy workflow's output is reachable
   at a public URL.
-- ⬜ **Extend YAML schema to capture full research detail** — current schema
-  (`data/SCHEMA.md`) only covers price/models/benchmarks/CLI/IDE. Not yet
-  modeled: architecture notes, metering tables, scale-resilience %, "catch"/
-  "strength" notes, and sources — all present in `tools-comparison-data.md`
-  but not in the YAML/template pipeline.
-- ⬜ **Convert real tool data from `tools-comparison-data.md` into YAML** —
-  replace `data/example-tool.yaml` / `example-tool-2.yaml` placeholders with
-  the 10 real tools (Google Antigravity 2.0, Kimi K2.7 Code, Cursor AI, VS
-  Code + Kiro, Ollama Cloud, GitHub Copilot, Microsoft Copilot, OpenAI Codex,
-  Claude Code, Ollama Local).
-- ⬜ **Delete/replace placeholder YAML files** once real data lands.
 - ⬜ **Improve template** — add sorting/filtering by price, scale-resilience
   score, or benchmark; render the summary leaderboard and suggested rotation
   strategy from `tools-comparison-data.md`.

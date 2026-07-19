@@ -1,0 +1,51 @@
+id: ollama-cloud
+name: Ollama Cloud
+vendor: Ollama
+price_summary: "$20/mo (Pro)"
+price_usd_month: 20
+free_tier: true
+tasks_per_month: "600-900"
+cost_per_task_usd: 0.027
+
+models:
+  - name: DeepSeek-V4-Pro
+    role: "Extra heavy (Level 4)"
+  - name: Qwen 3 Coder
+    role: "Heavy (Level 3)"
+  - name: GPT-OSS (Level 1-4)
+    role: Various sizes
+  - name: All open-weight frontier models
+    role: Immediately available on release
+
+interfaces:
+  cli: "ollama CLI (unified local + cloud interface)"
+  ide: "Any editor via OpenAI-compatible API endpoint"
+  web: "Ollama Cloud dashboard"
+
+architecture:
+  - "GPU-time billing: billed for literal GPU seconds of compute, NOT token count"
+  - "Large context does NOT increase cost proportionally (unlike token-metered tools)"
+  - "As hardware improves, you get more from the same plan"
+
+benchmarks:
+  - name: SWE-Bench (model-dependent)
+    score: "~75%"
+
+metering:
+  - "Free: $0, 1 model concurrency, baseline usage"
+  - "Pro: $20/mo, 3 models concurrency, 50x Free usage"
+  - "Max: $100/mo, unlimited concurrency, maximum usage"
+  - "Session limits reset every 5 hours. Weekly limits reset every 7 days."
+
+budget_behavior:
+  scale_resilience_pct: 98
+  catch: "Quality depends on which open model you choose (may trail proprietary frontier)"
+  strength: "BEST scale resilience — GPU-time billing immune to context cost penalties. Pass an enormous codebase context and you aren't penalized for file size."
+
+sources:
+  - https://ollama.com/pricing
+  - https://dev.to/amareswer/ollama-cloud-free-vs-pro-usage-limits-pricing-what-you-actually-get-2026-3ieo
+  - https://pooyagolchian.com/blog/ollama-cloud-pricing-hardware-requirements-2026/
+  - https://daniliants.com/insights/pricing-ollama/
+
+last_updated: 2026-07-19

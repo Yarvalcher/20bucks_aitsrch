@@ -1,0 +1,54 @@
+id: cursor-ai
+name: Cursor AI
+vendor: Anysphere
+price_summary: "$20/mo (Pro)"
+price_usd_month: 20
+free_tier: false
+tasks_per_month: "250-500"
+cost_per_task_usd: 0.053
+
+models:
+  - name: Composer 2.5
+    role: "Primary in-house model (shipped May 18, 2026)"
+  - name: Claude Sonnet 4.6
+    role: Fallback for complex reasoning
+  - name: GPT-4o
+    role: Fallback for general tasks
+
+interfaces:
+  cli: null
+  ide: "Custom VS Code fork with inline predictions + Composer multi-file editing"
+  web: null
+
+architecture:
+  - "Operates directly on active text buffer"
+  - "Composer: multi-file editing from high-level instructions"
+  - "Inline predictive typing (tab completion)"
+  - "Auto-pulls related files into prompt window for context coherence"
+  - "Composer 2.5 pricing: Standard $0.50/1M in, $2.50/1M out; Fast $3.00/1M in, $15.00/1M out (~30% faster)"
+
+benchmarks:
+  - name: SWE-Bench Multilingual
+    score: "79.8%"
+  - name: CursorBench v3.1
+    score: "63.2%"
+  - name: Terminal-Bench 2.0
+    score: "Evaluated (score not public)"
+
+metering:
+  - "Usage-equivalent dollar drawdown pool (~$20 value on Pro)"
+  - "Fast tier is 6x more expensive but 30% faster"
+  - "Context auto-inclusion charges tokens for every related file pulled in"
+
+budget_behavior:
+  scale_resilience_pct: 50
+  catch: "WORST scale resilience — context snowball effect. As project grows 1K to 20K lines, per-task cost rises 10-12x. A $0.02 task on day 1 becomes $0.25 by week 3."
+  strength: "Best-in-class UX for small projects; inline completions feel magical"
+
+sources:
+  - https://www.buildfastwithai.com/blogs/cursor-composer-2-5-review-2026
+  - https://artificialanalysis.ai/articles/cursor-composer-2-5-coding-agent-index
+  - https://beyondtmrw.org/article/cursor-composer-25-release-pricing-benchmarks-2026
+  - https://tech-insider.org/cursor-vs-copilot-2026/
+
+last_updated: 2026-07-19

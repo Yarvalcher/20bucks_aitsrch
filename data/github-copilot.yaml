@@ -1,0 +1,57 @@
+id: github-copilot
+name: GitHub Copilot
+vendor: GitHub (Microsoft)
+price_summary: "$10/mo (Pro) | $39/mo (Pro+) | $100/mo (Max)"
+price_usd_month: 10
+free_tier: true
+tasks_per_month: "300-500"
+cost_per_task_usd: 0.050
+
+models:
+  - name: GPT-4o
+    role: "Pro, Pro+, Max"
+  - name: Claude Sonnet 4.6
+    role: "Pro, Pro+, Max"
+  - name: Gemini 2.5 Pro
+    role: "Pro, Pro+, Max"
+  - name: Claude Opus 4.6
+    role: "Pro+, Max only"
+  - name: o3
+    role: "Pro+, Max only"
+
+interfaces:
+  cli: "GitHub Copilot CLI + Agent Mode"
+  ide: "VS Code, JetBrains, Neovim (native extensions)"
+  web: "github.com integrated (Copilot Chat)"
+
+architecture:
+  - "Multi-model routing: selects best model per task type"
+  - "Agent Mode (GA since Mar 2026): multi-step autonomous coding in VS Code/JetBrains"
+  - "Coding Agent: assign an issue to Copilot -> it writes code, runs tests, opens PR"
+  - "Agentic Code Review (Mar 2026): auto-generates fix PRs from review comments"
+
+benchmarks:
+  - name: SWE-Bench Verified
+    score: "56.0%"
+
+metering:
+  - "Since June 2026: usage-based billing"
+  - "Free: $0, limited completions"
+  - "Pro: $10/mo, $15 credits ($10 base + $5 flex)"
+  - "Pro+: $39/mo, higher limits + premium models"
+  - "Max: $100/mo, maximum capacity"
+  - "Business: $19/seat/mo, org management"
+  - "Enterprise: $39/seat/mo, full compliance"
+
+budget_behavior:
+  scale_resilience_pct: 80
+  catch: "Pro only gives $15 in credits; heavy agent mode usage needs Pro+ ($39)"
+  strength: "Best CI/CD integration — auto-assigns issues to PRs. Multi-model means you can match model to task."
+
+sources:
+  - https://www.nxcode.io/resources/news/github-copilot-complete-guide-2026-features-pricing-agents
+  - https://tech-insider.org/github-copilot-vs-cursor-2026-2/
+  - https://github.com/features/copilot/plans
+  - https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing
+
+last_updated: 2026-07-19

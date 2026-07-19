@@ -1,0 +1,50 @@
+id: microsoft-copilot
+name: Microsoft Copilot
+vendor: Microsoft
+price_summary: "$20/mo (Copilot Pro consumer)"
+price_usd_month: 20
+free_tier: true
+tasks_per_month: "300-400"
+cost_per_task_usd: 0.057
+
+models:
+  - name: GPT-4o
+    role: Primary general model
+  - name: GPT-5.2
+    role: Complex reasoning tasks
+  - name: Phi-4
+    role: "Fast/light tasks (Microsoft proprietary)"
+  - name: Work IQ
+    role: Dynamic hybrid routing layer
+
+interfaces:
+  cli: null
+  ide: "N/A (not a code IDE — it's an office productivity tool)"
+  web: "Edge integration, Bing Chat, Microsoft 365 apps"
+
+architecture:
+  - "Work IQ: dynamically selects from GPT-4o/5.2/Phi-4 based on task complexity and latency"
+  - "Deep Microsoft Graph grounding (accesses your M365 data for context)"
+  - "DALL-E 3 image generation included"
+  - "Primarily an office productivity AI, not a code-focused tool"
+
+benchmarks:
+  - name: SWE-Bench
+    score: "No code-specific score (not designed for autonomous coding)"
+
+metering:
+  - "Free: $0, basic chat"
+  - "Pro: $20/mo, consumer (priority access, all models)"
+  - "M365 Copilot: $30/user/mo, enterprise (requires E3/E5 license)"
+
+budget_behavior:
+  scale_resilience_pct: 80
+  catch: "Limited multi-file code reasoning; designed for office productivity, not dev workflows"
+  strength: "If you already pay for M365, the integration is seamless for docs/emails alongside coding"
+
+sources:
+  - https://ucstrategies.com/news/microsoft-copilot-guide-specs-pricing-graph-grounding-explained-2026/
+  - https://www.datastudios.org/post/microsoft-copilot-model-lineup-combines-gpt-5-gpt-4o-phi-series-and-custom-studio-options-to-powe
+  - https://tech-insider.org/chatgpt-vs-copilot-2026/
+
+last_updated: 2026-07-19

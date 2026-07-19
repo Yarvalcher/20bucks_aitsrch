@@ -2,40 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>AI Tool Search — $20 and under</title>
+  <title>$20 AI Dev Tool Comparison</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 960px; }
-    table { border-collapse: collapse; width: 100%; }
-    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 1100px; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 3rem; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; vertical-align: top; }
     th { background: #f4f4f4; }
+    h2 { margin-top: 2.5rem; }
+    .tool-meta { color: #555; font-size: 0.9rem; }
+    ul { margin: 0.25rem 0; padding-left: 1.25rem; }
   </style>
 </head>
 <body>
-  <h1>AI Tool Search</h1>
+  <h1>$20 AI Dev Tool Comparison</h1>
+  <p class="tool-meta">Full-stack React + FastAPI development on a $20/month budget.</p>
+
   <table>
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Price/mo</th>
-        <th>Free tier</th>
-        <th>CLI</th>
-        <th>IDEs</th>
-        <th>Updated</th>
+        <th>Tool</th>
+        <th>Price</th>
+        <th>Tasks/mo</th>
+        <th>$/task</th>
+        <th>Scale resilience</th>
+        <th>Top benchmark</th>
       </tr>
     </thead>
     <tbody>
       {% for tool in tools %}
       <tr>
-        <td><a href="{{ tool.website }}">{{ tool.name }}</a></td>
-        <td>${{ tool.price_usd_month }}</td>
-        <td>{{ "Yes" if tool.free_tier else "No" }}</td>
-        <td>{{ "Yes" if tool.cli else "No" }}</td>
-        <td>{{ tool.ide_integrations | join(", ") }}</td>
-        <td>{{ tool.last_updated }}</td>
+        <td><a href="#{{ tool.id }}">{{ tool.name }}</a></td>
+        <td>{{ tool.price_summary }}</td>
+        <td>{{ tool.tasks_per_month }}</td>
+        <td>{{ tool.cost_per_task_usd if tool.cost_per_task_usd is not none else "—" }}</td>
+        <td>{{ tool.budget_behavior.scale_resilience_pct }}%</td>
+        <td>{{ tool.benchmarks[0].name }}: {{ tool.benchmarks[0].score }}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+
+  {% for tool in tools %}
+  <h2 id="{{ tool.id }}">{{ tool.name }}</h2>
+  <p class="tool-meta">{{ tool.vendor }} · {{ tool.price_summary }} · last updated {{ tool.last_updated }}</p>
+
+  <h3>Models</h3>
+  <ul>
+    {% for m in tool.models %}
+    <li><strong>{{ m.name }}</strong> — {{ m.role }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Interfaces</h3>
+  <ul>
+    {% if tool.interfaces.cli %}<li>CLI: {{ tool.interfaces.cli }}</li>{% endif %}
+    {% if tool.interfaces.ide %}<li>IDE: {{ tool.interfaces.ide }}</li>{% endif %}
+    {% if tool.interfaces.web %}<li>Web: {{ tool.interfaces.web }}</li>{% endif %}
+  </ul>
+
+  <h3>Architecture</h3>
+  <ul>
+    {% for a in tool.architecture %}<li>{{ a }}</li>{% endfor %}
+  </ul>
+
+  <h3>Benchmarks</h3>
+  <ul>
+    {% for b in tool.benchmarks %}<li>{{ b.name }}: {{ b.score }}</li>{% endfor %}
+  </ul>
+
+  <h3>Metering</h3>
+  <ul>
+    {% for m in tool.metering %}<li>{{ m }}</li>{% endfor %}
+  </ul>
+
+  <h3>$20 Budget Behavior</h3>
+  <ul>
+    <li>Scale resilience: {{ tool.budget_behavior.scale_resilience_pct }}%</li>
+    <li>Catch: {{ tool.budget_behavior.catch }}</li>
+    <li>Strength: {{ tool.budget_behavior.strength }}</li>
+  </ul>
+
+  <h3>Sources</h3>
+  <ul>
+    {% for s in tool.sources %}<li><a href="{{ s }}">{{ s }}</a></li>{% endfor %}
+  </ul>
+  {% endfor %}
 </body>
 </html>

@@ -1,0 +1,54 @@
+id: openai-codex
+name: OpenAI Codex
+vendor: OpenAI
+price_summary: "$20/mo (Plus) | $100/mo (Pro 5x) | $200/mo (Pro 20x)"
+price_usd_month: 20
+free_tier: true
+tasks_per_month: "200-400"
+cost_per_task_usd: 0.067
+
+models:
+  - name: GPT-5.3-Codex
+    role: Default for code agent tasks
+  - name: GPT-5.4-Mini
+    role: Lighter/cheaper tasks
+  - name: GPT-5.3-Codex-Spark
+    role: "Research preview (Pro only)"
+  - name: GPT-5.5
+    role: "Highest capability (Pro only)"
+
+interfaces:
+  cli: "Codex CLI"
+  ide: "VS Code extension"
+  web: "Codex web app (codex.openai.com)"
+
+architecture:
+  - "Cloud-sandboxed agent: reads repo, writes code, runs tests autonomously"
+  - "Token-based billing aligned with API rates (changed Apr 2, 2026)"
+  - "Supports automated code review and PR generation"
+  - "iOS app; integrations with GitHub, Slack bot, auto code review"
+
+benchmarks:
+  - name: SWE-Bench Verified
+    score: "~72% (GPT-5.3-Codex estimated)"
+
+metering:
+  - "Free: $0, very limited"
+  - "Go: $8/mo, basic access"
+  - "Plus: $20/mo, expanded Codex usage"
+  - "Pro 5x: $100/mo, 5x capacity"
+  - "Pro 20x: $200/mo, 20x capacity"
+  - "Real-world heavy usage: ~$100-200/developer/month due to reasoning model overhead"
+
+budget_behavior:
+  scale_resilience_pct: 70
+  catch: "Reasoning models (o1, GPT-5.5) consume quotas 2-3x faster than standard completions"
+  strength: "Strongest autonomous agent when budget isn't constrained; excellent at test-driven development"
+
+sources:
+  - https://www.eesel.ai/blog/codex-pricing
+  - https://www.morphllm.com/codex-pricing
+  - https://www.verdent.ai/guides/codex-pricing-2026
+  - https://www.taskade.com/blog/codex-pricing-explained
+
+last_updated: 2026-07-19

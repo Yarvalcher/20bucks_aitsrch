@@ -1,0 +1,54 @@
+id: ollama-local
+name: Ollama (Local)
+vendor: Ollama (open-source)
+price_summary: "Free ($0)"
+price_usd_month: 0
+free_tier: true
+tasks_per_month: "Unlimited (hardware-bound)"
+cost_per_task_usd: 0
+
+models:
+  - name: Qwen 3 Coder
+    role: "7B-72B — good for completions"
+  - name: DeepSeek-Coder-V2
+    role: "16B-236B — strong code generation"
+  - name: Llama 3.3
+    role: "8B-70B — general purpose"
+  - name: CodeGemma
+    role: "7B — fast, lightweight"
+  - name: Any GGUF model
+    role: Community models, varies
+  - name: Kimi K3 (upcoming)
+    role: Near-frontier when released
+
+interfaces:
+  cli: "ollama pull, ollama run, ollama serve"
+  ide: "Any editor via localhost OpenAI-compatible API (Continue, Aider, Cody, etc.)"
+  web: "Open WebUI (self-hosted); API at localhost:11434"
+
+architecture:
+  - "Local inference on your GPU (no network dependency)"
+  - "Full privacy — code never leaves your machine"
+  - "GGUF quantization for running large models on consumer hardware"
+  - "No rate limits, no quotas, no accounts"
+  - "Requirements: min 8GB RAM + 4GB VRAM (or CPU-only); recommended 16GB+ RAM + 12GB+ VRAM (RTX 3060+); 70B models need 32GB+ RAM + 24GB VRAM (RTX 4090/A6000)"
+
+benchmarks:
+  - name: "SWE-Bench (Qwen 3 32B, estimated)"
+    score: "~55%"
+  - name: "SWE-Bench (DeepSeek-Coder-V2 236B, estimated)"
+    score: "~65%"
+
+metering:
+  - "No metering — fully local, cost is electricity only"
+
+budget_behavior:
+  scale_resilience_pct: 100
+  catch: "Quality is below cloud frontier models. Generation speed limited by your hardware."
+  strength: "Unlimited usage. Run Kimi K3 / DeepSeek open weights for $0 once released. Perfect for bulk boilerplate, completions, and privacy-sensitive code."
+
+sources:
+  - https://ollama.com
+  - https://ollama.com/pricing
+
+last_updated: 2026-07-19

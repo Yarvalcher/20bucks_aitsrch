@@ -1,0 +1,52 @@
+id: kimi-k2-7-code
+name: Kimi K2.7 Code
+vendor: Moonshot AI
+price_summary: "Pay-as-you-go (CLI is free, MIT license)"
+price_usd_month: 0
+free_tier: true
+tasks_per_month: "600-1000"
+cost_per_task_usd: 0.025
+
+models:
+  - name: Kimi K2.7 Code
+    role: "1T MoE (32B active), 256K context — primary coding model"
+  - name: Kimi K2.6
+    role: "1T MoE, 256K context — previous gen, cheaper"
+  - name: Kimi K3
+    role: "256K context — open weights shipping late Jul 2026"
+
+interfaces:
+  cli: "Kimi Code CLI (TypeScript, MIT, distributed via npm)"
+  ide: "VS Code, Zed, JetBrains via Agent Client Protocol (ACP)"
+  web: "Kimi web app (chat + agent)"
+
+architecture:
+  - "MoE (Mixture-of-Experts): activates only 32B of 1T parameters per task"
+  - "256K context window tuned for repository-scale codebases"
+  - "Agent Swarm: coordinates up to 100 parallel sub-agents (4.5x speedup)"
+  - "Native MCP (Model Context Protocol) configuration via /mcp-config"
+  - "Built-in coder, explore, plan subagents in isolated contexts"
+
+benchmarks:
+  - name: SWE-Bench Verified
+    score: "76.8%"
+
+metering:
+  - "Pure token consumption: input (cache miss) $0.95/1M, input (cache hit) $0.19/1M (80% discount), output (standard) $4.00/1M, output (high-speed) $8.00/1M"
+  - "No subscription required — CLI is free, you pay API costs only"
+  - "Open weights available: run locally for $0"
+  - "Kimi Platform tiers (do NOT include API calls, billed separately): Adagio (Free) $0, Moderato $19/mo, Allegretto $39/mo, Allegro $99/mo, Vivace $199/mo"
+
+budget_behavior:
+  scale_resilience_pct: 92
+  catch: "First-pass of new files costs full rate; subsequent iterations are heavily cached"
+  strength: "Gets MORE cost-efficient as project grows (opposite of context snowball)"
+
+sources:
+  - https://www.kimi.com/resources/kimi-k2-7-code-pricing
+  - https://github.com/MoonshotAI/kimi-code
+  - https://www.marktechpost.com/2026/06/06/moonshot-ai-releases-kimi-code-cli-a-terminal-ai-coding-agent-built-in-typescript-for-next-gen-agents/
+  - https://kimik2ai.com/pricing/
+  - https://medium.com/@tentenco/kimi-k2-6-kimi-code-review-saving-88-coding-costs-b7e8c5eaf5f1
+
+last_updated: 2026-07-19

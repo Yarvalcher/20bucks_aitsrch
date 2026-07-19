@@ -1,0 +1,54 @@
+id: claude-code
+name: Claude Code (CLI)
+vendor: Anthropic
+price_summary: "$20/mo (Pro) | $100/mo (Max 5x) | $200/mo (Max 20x)"
+price_usd_month: 20
+free_tier: false
+tasks_per_month: "150-250"
+cost_per_task_usd: 0.100
+
+models:
+  - name: Claude Sonnet 5
+    role: "$3/1M input, $15/1M output"
+  - name: Claude Opus 4.6/4.7/4.8
+    role: "$5/1M input, $25/1M output"
+  - name: Claude Haiku 4.5
+    role: "$1/1M input, $5/1M output"
+  - name: Claude Fable 5
+    role: "$10/1M input, $50/1M output"
+
+interfaces:
+  cli: "Claude Code (official Anthropic terminal agent)"
+  ide: "VS Code extension, JetBrains extension"
+  web: "claude.ai/code"
+
+architecture:
+  - "Agentic loop: reads/edits code, runs shell commands, iterates on errors"
+  - "Native MCP (Model Context Protocol) support"
+  - "Subagents for parallel work"
+  - "Computer use: can open apps and navigate browsers from terminal"
+  - "Extended thinking for complex reasoning chains"
+  - "Desktop app for Mac and Windows"
+
+benchmarks:
+  - name: SWE-Bench Verified
+    score: "80.8% (Opus 4.6) — highest of all tools"
+
+metering:
+  - "Pro ($20): ~44K token window/5hr, limited Sonnet, very limited Opus"
+  - "Max 5x ($100): ~88K token window/5hr, 140-280 Sonnet hrs/week, 15-35 Opus hrs/week"
+  - "Max 20x ($200): ~220K token window/5hr, 240-480 Sonnet hrs/week, 24-40 Opus hrs/week"
+  - "API cost optimization: cache reads at 10% of standard input price, Batch API 50% discount on all models; prompt caching is the largest cost lever for API users"
+
+budget_behavior:
+  scale_resilience_pct: 60
+  catch: "Pro gives only ~44K tokens/5hr (10-40 prompts). Agentic loops where the model iterates multiple times drain this fast."
+  strength: "Highest benchmark scores. Best for hard problems where getting it right on fewer attempts saves money vs. cheaper tools that need more iterations."
+
+sources:
+  - https://www.verdent.ai/guides/claude-code-pricing-2026
+  - https://www.nxcode.io/resources/news/claude-code-pricing-2026-free-api-costs-max-plan
+  - https://www.finout.io/blog/claude-code-pricing-2026
+  - https://platform.claude.com/docs/en/about-claude/pricing
+
+last_updated: 2026-07-19

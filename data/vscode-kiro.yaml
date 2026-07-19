@@ -1,0 +1,52 @@
+id: vscode-kiro
+name: VS Code + Kiro
+vendor: AWS (Amazon)
+price_summary: "$20/mo (Pro, 1,000 credits)"
+price_usd_month: 20
+free_tier: true
+tasks_per_month: "500-1000"
+cost_per_task_usd: 0.027
+
+models:
+  - name: Claude Sonnet 4.5
+    role: "Primary (default \"Auto\" mode)"
+  - name: Claude Sonnet 4.6
+    role: "Available (costs 1.3x more credits)"
+  - name: Custom auto-routing ensemble
+    role: Task-optimized selection
+
+interfaces:
+  cli: null
+  ide: "Kiro IDE (VS Code fork by AWS)"
+  web: null
+
+architecture:
+  - "Spec-driven workflow: Prompt -> Executable Requirement Spec -> Architecture Design -> Code Generation -> Property-based Tests"
+  - "Rejects \"vibe coding\" — forces you to agree on a technical spec before writing code"
+  - "Automatically writes property-based tests to verify code matches spec"
+  - "Auth: AWS Builder ID, IAM Identity Center"
+
+benchmarks:
+  - name: SWE-Bench
+    score: "No published score (spec-driven approach eliminates iterative benchmark-style loops)"
+
+metering:
+  - "Free: 50 credits/mo, $0"
+  - "Pro: 1,000 credits/mo, $20/mo"
+  - "Pro+: 2,000 credits/mo, $40/mo"
+  - "Power: 10,000 credits/mo, $200/mo"
+  - "Overage: $0.04/credit"
+  - "Credits do NOT roll over. Sonnet 4.6 costs 1.3x more credits than Auto mode."
+
+budget_behavior:
+  scale_resilience_pct: 95
+  catch: "Requires disciplined architectural thinking; slower for quick experimentation"
+  strength: "Most predictable budget consumption — you know exactly what 1,000 credits buys"
+
+sources:
+  - https://kiro.dev/docs/models/
+  - https://lushbinary.com/blog/kiro-ide-developer-guide-specs-hooks-agents-pricing/
+  - https://pingax.com/kiro-aws-launch-announcement/
+  - https://weavai.app/blog/en/2026/04/29/amazon-kiro-2026-review-spec-driven-ide-vs-cursor/
+
+last_updated: 2026-07-19

@@ -1,0 +1,49 @@
+id: google-antigravity
+name: Google Antigravity 2.0
+vendor: Google
+price_summary: "$19.99/mo (AI Pro) | $100/mo (AI Ultra 5x) | $200/mo (AI Ultra 20x)"
+price_usd_month: 19.99
+free_tier: true
+tasks_per_month: "1200-1600"
+cost_per_task_usd: 0.014
+
+models:
+  - name: Gemini 3.5 Flash
+    role: "Primary — 4x faster than 3.1 Pro, outperforms it on coding benchmarks"
+  - name: Gemini 3.1 Pro
+    role: Deep reasoning fallback
+  - name: Claude Opus 4.6
+    role: Available on Ultra tiers
+  - name: GPT-OSS-120b
+    role: Open-source tier
+
+interfaces:
+  cli: "Antigravity CLI (Go-based, replaced Gemini CLI June 18, 2026)"
+  ide: "Standalone desktop app (agent-first workspace)"
+  web: "Yes (browser-based workspace)"
+
+architecture:
+  - "Multi-agent workspace: Manager Agent coordinates parallel sub-agents"
+  - "5 components: Desktop app, CLI, SDK, Managed Agents API, Enterprise path"
+  - "Sub-agents can work simultaneously (one writes FastAPI schemas while another generates React views)"
+
+benchmarks:
+  - name: General coding benchmarks
+    score: "Gemini 3.5 Flash outperforms 3.1 Pro across almost all; no published SWE-Bench Verified score for the platform"
+
+metering:
+  - "AI Credit Pool with Tiered Rate Windows"
+  - "Free tier: unlimited basic commands, severe throttling on multi-agent"
+  - "Pro ($19.99): mandatory for multi-agent execution loops"
+
+budget_behavior:
+  scale_resilience_pct: 85
+  catch: "Free tier is heavily throttled; Pro mandatory for real dev work"
+  strength: "Parallel sub-agents mean you can scaffold an entire project in one session"
+
+sources:
+  - https://vibecoding.app/blog/google-antigravity-pricing-2026
+  - https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-io-2026/
+  - https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/
+
+last_updated: 2026-07-19
