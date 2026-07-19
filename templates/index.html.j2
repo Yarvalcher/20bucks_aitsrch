@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AI Tool Search — $20 and under</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 960px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f4f4f4; }
+  </style>
+</head>
+<body>
+  <h1>AI Tool Search</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price/mo</th>
+        <th>Free tier</th>
+        <th>CLI</th>
+        <th>IDEs</th>
+        <th>Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tool in tools %}
+      <tr>
+        <td><a href="{{ tool.website }}">{{ tool.name }}</a></td>
+        <td>${{ tool.price_usd_month }}</td>
+        <td>{{ "Yes" if tool.free_tier else "No" }}</td>
+        <td>{{ "Yes" if tool.cli else "No" }}</td>
+        <td>{{ tool.ide_integrations | join(", ") }}</td>
+        <td>{{ tool.last_updated }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
